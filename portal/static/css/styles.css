@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+    padding: 20px 200px;
+}
+
+.header-content{
+    display: flex;
+    gap: 10px;
+}
+
+.main{
+    padding: 20px 200px;
+}

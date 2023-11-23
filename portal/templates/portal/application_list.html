@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h2>Созданные заявки</h2>
+
+{% if application_list %}
+  <div>
+
+  {% for application in application_list %}
+    <div>
+      {{ application }}
+      <a href="{% url 'application_delete_confirm' pk=application.id%}">Удаление</a>
+    </div>
+  {% endfor %}
+
+  </div>
+{% else %}
+  <p>Нет заявок</p>
+{% endif %}
+{% endblock %}

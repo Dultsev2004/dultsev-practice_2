@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Ваш профиль</h2>
+    {% if user.is_authenticated %}
+        <h2>Профиль пользователя {{ request.user.username }}</h2>
+        {% if application_list %}
+        <h2>Ваши заявки:</h2>
+        <div class="application-item">
+            {% for application in application_list %}
+                <p>Временная метка: {{ application.date }}</p>
+                <p>Название: {{ application.title }}</p>
+                <p>Описание: {{ application.description }}</p>
+                <p>Категория: {{ application.category }}</p>
+                <p>Фото: <img src="{{ application.image.url }}"></p>
+            <a href="{% url 'applications_delete' pk=application.id%}">Удаление</a>
+            {% endfor %}
+        </div>
+            {% else %}
+                <h2>Нету заявок</h2>
+            {% endif %}
+    {% endif %}
+{% endblock %}

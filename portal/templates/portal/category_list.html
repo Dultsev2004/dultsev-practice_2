@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h3>Страница для работы с категориями</h3>
+    <a href="{% url 'category_create' %}">Создать категорию</a>
+
+    <p>Все категории:</p>
+    <div>
+        {% for cat in categories %}
+          <p>Название категории: {{ cat.name }}</p>
+            <a href="{% url 'category_delete' pk=cat.id %}">Удалить</a>
+        {% endfor %}
+    </div>
+{% endblock %}

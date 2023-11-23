@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% block title %}<title>Internet Portal</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <header class="header">
+      {% block header %}
+    <div class="header-content">
+        <p>Design.Pro</p>
+        <a href="{% url 'index' %}">Главная</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">Профиль</a>
+            <a href="{% url 'applications_create' %}">Создать заявку</a>
+            {% if user.is_staff %}
+                <a>Заявки</a>
+                <a href="{% url 'categories' %}">Добавить категорию</a>
+           {% endif %}
+       {% endif %}
+    </div>
+    <div class="header-content">
+      {% if user.is_authenticated %}
+          <p>User: {{ user.get_username }}</p>
+          <a href="{% url 'logged_out'%}">Выйти</a>
+          {% else %}
+            <a href="{% url 'login'%}">Авторизация</a>
+            <a href="{% url 'registration'%}">Регистрация</a>
+       {% endif %}
+    </div>
+
+      {% endblock %}
+  </header>
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

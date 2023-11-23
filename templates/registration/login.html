@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+{% load bootstrap4 %}
+
+
+{% if form.errors %}
+    <h2>Введен неправильный логин или пароль!</h2>
+{% endif %}
+
+{% block content %}
+    <h2>Вход в аккаунт</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form layout='horizontal' %}
+        {% buttons submit='Войти' %}{% endbuttons %}
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Главная страница «Design.pro»</h2>
+
+    {% if application_list %}
+        <h2>Последние 4 заявки в статусе «Выполнено»:</h2>
+        <div>
+            {% for application in application_list %}
+                <p>Временная метка: {{ application.date }}</p>
+                <p>Название: {{ application.title }}</p>
+                <p>Описание: {{ application.description }}</p>
+                <p>Категория: {{ application.category }}</p>
+                <p>Фото: <img src="{{ application.image.url }}"></p>
+            {% endfor %}
+        </div>
+        <div>
+            {% for application in application_list %}
+                <p>Количество заявок, находящихся в статусе «Принято в работу»: {{ application.date }}</p>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p>Нет заявок</p>
+    {% endif %}
+{% endblock %}

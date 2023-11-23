@@ -1,0 +1,7 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Подтверждение удаления</h2>
+    <a href="{% url 'applications_delete_confirm' pk=application.id %}" class="btn btn-primary">Подтвердить</a>
+    <a href="{% url 'index' %}" class="btn btn-primary">Отменить</a>
+{% endblock %}
