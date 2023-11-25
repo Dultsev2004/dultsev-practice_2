@@ -20,6 +20,7 @@ class RegistrationUserForm(UserCreationForm):
             raise forms.ValidationError("Пароли не совпадают!")
         return value['password2']
 
+
 class ApplicationForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get("image")
@@ -35,10 +36,32 @@ class ApplicationForm(forms.ModelForm):
 
     class Meta:
         model = Application
-        fields = ['title', 'description', 'category', 'image']
+        fields = ('title', 'description', 'category', 'image',)
 
 
 class CategoryCreateForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = '__all__'
+
+
+class ApplicationDoneForm(forms.ModelForm):
+    image_created = forms.ImageField(label='Созданный дизайн', required=True)
+
+    class Meta:
+        model = Application
+        fields = ('image_created',)
+
+
+class ApplicationInWorkForm(forms.ModelForm):
+    comment = forms.CharField(label='Комментарий', widget=forms.Textarea, required=True)
+
+    class Meta:
+        model = Application
+        fields = ('comment',)
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ('title', 'description', )

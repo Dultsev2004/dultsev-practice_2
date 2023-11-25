@@ -1,14 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h3>Страница для работы с категориями</h3>
-    <a href="{% url 'category_create' %}">Создать категорию</a>
-
-    <p>Все категории:</p>
-    <div>
-        {% for cat in categories %}
-          <p>Название категории: {{ cat.name }}</p>
-            <a href="{% url 'category_delete' pk=cat.id %}">Удалить</a>
+    <h2>Страница с категориями заявок.</h2>
+    <br>
+    {% if categories_list %}
+        <h2>Все категории:</h2>
+        {% for category in categories_list %}
+            <p>Название категории: {{ category.title }}</p>
+            <p>Описание категории: {{ category.description }}</p>
+            <a href="{% url 'category_delete' pk=category.id %}">Удалить категорию</a>
         {% endfor %}
-    </div>
+    {% else %}
+        <p>В данный момент на сайте нет категорий.</p>
+    {% endif %}
 {% endblock %}

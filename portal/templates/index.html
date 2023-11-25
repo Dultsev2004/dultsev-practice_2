@@ -4,6 +4,9 @@
     <h2>Главная страница «Design.pro»</h2>
 
     {% if application_list %}
+        <div>
+            <p>Количество заявок, находящихся в статусе «Принято в работу»: {{ applications_count }}</p>
+        </div>
         <h2>Последние 4 заявки в статусе «Выполнено»:</h2>
         <div>
             {% for application in application_list %}
@@ -14,12 +17,7 @@
                 <p>Фото: <img src="{{ application.image.url }}"></p>
             {% endfor %}
         </div>
-        <div>
-            {% for application in application_list %}
-                <p>Количество заявок, находящихся в статусе «Принято в работу»: {{ application.date }}</p>
-            {% endfor %}
-        </div>
         {% else %}
-            <p>Нет заявок</p>
+        <p>Нет заявок в статусе «Выполнено»</p>
     {% endif %}
 {% endblock %}

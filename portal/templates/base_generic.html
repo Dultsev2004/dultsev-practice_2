@@ -17,8 +17,9 @@
             <a href="{% url 'profile' %}">Профиль</a>
             <a href="{% url 'applications_create' %}">Создать заявку</a>
             {% if user.is_staff %}
-                <a>Заявки</a>
-                <a href="{% url 'categories' %}">Добавить категорию</a>
+                <a href="{% url 'application_list' %}">Все заявки</a>
+                <a href="{% url 'category_list' %}">Все категории</a>
+                <a href="{% url 'category_create' %}">Добавить категорию</a>
            {% endif %}
        {% endif %}
     </div>

@@ -1,5 +1,5 @@
 from django.db import models
-from .validators import FIOValidator, LoginValidator
+from .validators import FIOValidator
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
@@ -32,6 +32,8 @@ class Application(models.Model):
     description = models.TextField(verbose_name='Описание заявки')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     image = models.ImageField(upload_to='images/', verbose_name='Фото')
+    image_created = models.ImageField(upload_to='images_created/', verbose_name='Созданная работа', blank=True)
+    comment = models.TextField(verbose_name='Комментарий', blank=True)
 
     STATE_CHOICES = [
         ('new', 'Новая'),

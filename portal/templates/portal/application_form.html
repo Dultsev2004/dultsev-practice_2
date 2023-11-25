@@ -1,13 +1,14 @@
 {% extends "base_generic.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 <h2>Создание заявки</h2>
 
 <form action="" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <table>
+  <div style="display: flex; flex-direction: column ">
     {{ form.as_table }}
-  </table>
+  </div>
   <input type="submit" value="Отправить" />
 </form>
 {% endblock %}
